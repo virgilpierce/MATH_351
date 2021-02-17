@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[14]:
+# In[1]:
 
 
 import pandas as pa
@@ -9,13 +9,13 @@ import datetime as dt
 pa.set_option('max_colwidth', 200)
 
 
-# In[15]:
+# In[2]:
 
 
 first_day = dt.date(2021, 1, 11)
 
 
-# In[16]:
+# In[3]:
 
 
 holidays = [dt.date(2021, 1, 18) ]
@@ -25,26 +25,26 @@ spring_break_delta = spring_break_end - spring_break_start
 holidays += [ spring_break_start + dt.timedelta(i) for i in range(spring_break_delta.days+1)]
 
 
-# In[17]:
+# In[4]:
 
 
 last_day = dt.date(2021, 4, 30)
 
 
-# In[18]:
+# In[5]:
 
 
 final_exam = dt.date(2021, 5, 7)
 
 
-# In[19]:
+# In[6]:
 
 
 semester_length = last_day - first_day
 semester_length
 
 
-# In[20]:
+# In[7]:
 
 
 class_days = []
@@ -54,7 +54,7 @@ for i in range((semester_length.days //7 + 1)):
 class_days += [final_exam]
 
 
-# In[21]:
+# In[8]:
 
 
 schedule = pa.DataFrame(class_days, columns = ['Day'])
@@ -65,14 +65,14 @@ for i in range(schedule.shape[0]):
 schedule.Week_Day = schedule.Week_Day.map(weekday_dict)
 
 
-# In[22]:
+# In[9]:
 
 
 for holiday in holidays:
     schedule.loc[schedule.Day==holiday, 'Title'] = 'No Class - University Holiday'
 
 
-# In[23]:
+# In[10]:
 
 
 def add_day(title='', description='', notes=''):
@@ -93,7 +93,7 @@ def add_day(title='', description='', notes=''):
     
 
 
-# In[25]:
+# In[11]:
 
 
 day = 0
@@ -125,7 +125,7 @@ add_day('Multivariate Probability Distributions', 'marginal and conditional prob
 
 add_day('Independent Random Variables')
 
-add_day('Expected Value of Multivariate Random Variables and some Special Theorems')
+# add_day('Expected Value of Multivariate Random Variables and some Special Theorems')
 
 add_day('Sampling depedent random variables', 
         'Sampling dependent random variables is much harder than sampling single or independent random variables')
@@ -136,7 +136,7 @@ add_day('Expected values and variance of linear functions of random variables')
 
 add_day('The multinomial probability distribution')
 
-add_day('Conditional Expectations')
+#add_day('Conditional Expectations')
 
 # Functions of multivariate random variables
 
